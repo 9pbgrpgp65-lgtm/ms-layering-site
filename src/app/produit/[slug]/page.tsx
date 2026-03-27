@@ -81,52 +81,9 @@ export default function ProductPage() {
             <h1 className="font-heading text-4xl md:text-6xl font-light mb-3">
               {product.name}
             </h1>
-            <p className="font-body text-sm text-black/50 mb-8">
+            <p className="font-body text-sm text-black/50 mb-12">
               {product.brand}
             </p>
-
-            <p className="font-body text-base text-black/60 leading-relaxed mb-12">
-              {product.description}
-            </p>
-
-            {/* Notes */}
-            <div className="mb-12">
-              <h3 className="font-body text-xs uppercase tracking-[0.2em] text-gold mb-6">
-                Notes Olfactives
-              </h3>
-              <div className="grid grid-cols-3 gap-6">
-                <div>
-                  <p className="font-body text-[10px] uppercase tracking-[0.15em] text-black/40 mb-3">
-                    Tête
-                  </p>
-                  {product.notes.top.map((note) => (
-                    <p key={note} className="font-body text-sm text-black/70 mb-1">
-                      {note}
-                    </p>
-                  ))}
-                </div>
-                <div>
-                  <p className="font-body text-[10px] uppercase tracking-[0.15em] text-black/40 mb-3">
-                    Coeur
-                  </p>
-                  {product.notes.heart.map((note) => (
-                    <p key={note} className="font-body text-sm text-black/70 mb-1">
-                      {note}
-                    </p>
-                  ))}
-                </div>
-                <div>
-                  <p className="font-body text-[10px] uppercase tracking-[0.15em] text-black/40 mb-3">
-                    Fond
-                  </p>
-                  {product.notes.base.map((note) => (
-                    <p key={note} className="font-body text-sm text-black/70 mb-1">
-                      {note}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
 
             {/* Size selector */}
             <div className="mb-8">

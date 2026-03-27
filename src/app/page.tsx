@@ -57,10 +57,18 @@ export default function Home() {
           >
             Luxury inspired fragrances, made for you.
           </motion.p>
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
+            className="font-body text-sm text-gold mb-12 tracking-wider"
+          >
+            + de 200 références disponibles
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             <Link
               href="/catalogue"
