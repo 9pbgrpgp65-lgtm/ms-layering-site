@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { products } from "@/data/products";
 
-type Size = "30ml" | "50ml" | "100ml";
+type Size = "3ml" | "30ml" | "50ml" | "100ml";
 
 export default function ProductPage() {
   const params = useParams();
@@ -27,6 +27,7 @@ export default function ProductPage() {
   }
 
   const sizes: { label: Size; price: number }[] = [
+    { label: "3ml", price: product.prices["3ml"] },
     { label: "30ml", price: product.prices["30ml"] },
     { label: "50ml", price: product.prices["50ml"] },
     { label: "100ml", price: product.prices["100ml"] },
@@ -81,7 +82,7 @@ export default function ProductPage() {
               {product.name}
             </h1>
             <p className="font-body text-sm text-black/50 mb-8">
-              Inspiré de <span className="text-black/70">{product.inspiration}</span> — {product.brand}
+              {product.brand}
             </p>
 
             <p className="font-body text-base text-black/60 leading-relaxed mb-12">
@@ -143,7 +144,7 @@ export default function ProductPage() {
                         : "border border-black/20 text-black/60 hover:border-black"
                     }`}
                   >
-                    {label} — {price}€
+                    {label} — {price} EGP
                   </button>
                 ))}
               </div>
@@ -152,7 +153,7 @@ export default function ProductPage() {
             {/* Price */}
             <div className="mb-8">
               <span className="font-heading text-4xl">
-                {product.prices[selectedSize]}€
+                {product.prices[selectedSize]} EGP
               </span>
             </div>
 

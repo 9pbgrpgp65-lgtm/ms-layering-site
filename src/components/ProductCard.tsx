@@ -32,12 +32,12 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.name}
         </h3>
         <p className="font-body text-xs text-black/50 uppercase tracking-wider mb-2">
-          Inspiré de {product.inspiration} — {product.brand}
+          {product.brand}
         </p>
         <div className="flex gap-3 font-body text-sm">
-          <span className="text-black/40">30ml <span className="text-black">{product.prices["30ml"]}€</span></span>
-          <span className="text-black/40">50ml <span className="text-black">{product.prices["50ml"]}€</span></span>
-          <span className="text-black/40">100ml <span className="text-black">{product.prices["100ml"]}€</span></span>
+          <span className="text-black/40">30ml <span className="text-black">{product.prices["30ml"]} EGP</span></span>
+          <span className="text-black/40">50ml <span className="text-black">{product.prices["50ml"]} EGP</span></span>
+          <span className="text-black/40">100ml <span className="text-black">{product.prices["100ml"]} EGP</span></span>
         </div>
       </Link>
     </motion.div>

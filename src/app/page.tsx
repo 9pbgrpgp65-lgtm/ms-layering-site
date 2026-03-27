@@ -15,7 +15,7 @@ const steps = [
   {
     number: "02",
     title: "Personnalisez",
-    description: "Choisissez votre taille : 30ml, 50ml ou 100ml selon vos envies.",
+    description: "Choisissez votre taille : roll 3ml, 30ml, 50ml ou 100ml selon vos envies.",
   },
   {
     number: "03",
