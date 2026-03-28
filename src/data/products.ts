@@ -1,3 +1,18 @@
+export type Accord = {
+  name: string;
+  percentage: number;
+  color: string;
+};
+
+export type Seasons = {
+  winter: number;
+  spring: number;
+  summer: number;
+  fall: number;
+  day: number;
+  night: number;
+};
+
 export type Product = {
   id: number;
   name: string;
@@ -11,6 +26,13 @@ export type Product = {
   };
   slug: string;
   bestseller?: boolean;
+  notes?: {
+    top: string[];
+    middle: string[];
+    base: string[];
+  };
+  accords?: Accord[];
+  seasons?: Seasons;
 };
 
 export const products: Product[] = [
@@ -22,6 +44,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "aventus",
     bestseller: true,
+    notes: {
+      top: ["Pineapple", "Bergamot", "Black Currant", "Apple"],
+      middle: ["Birch", "Patchouli", "Moroccan Jasmine", "Rose"],
+      base: ["Musk", "Oak Moss", "Ambergris", "Vanille"],
+    },
+    accords: [
+      { name: "fruity", percentage: 100, color: "#e4a0a0" },
+      { name: "woody", percentage: 80, color: "#8B6914" },
+      { name: "patchouli", percentage: 65, color: "#6B4226" },
+      { name: "smoky", percentage: 50, color: "#7a7a7a" },
+      { name: "fresh spicy", percentage: 45, color: "#c5d99e" },
+      { name: "citrus", percentage: 40, color: "#e8d44d" },
+    ],
+    seasons: { winter: 60, spring: 80, summer: 60, fall: 80, day: 85, night: 70 },
   },
   {
     id: 2,
@@ -31,6 +67,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "baccarat-rouge-540",
     bestseller: true,
+    notes: {
+      top: ["Saffron", "Jasmine"],
+      middle: ["Amberwood", "Ambergris", "Hedione"],
+      base: ["Fir Resin", "Cedar", "Sugar", "Ambroxan", "Oakmoss"],
+    },
+    accords: [
+      { name: "woody", percentage: 100, color: "#8B6914" },
+      { name: "amber", percentage: 85, color: "#c47a2a" },
+      { name: "warm spicy", percentage: 60, color: "#c45a3c" },
+      { name: "metallic", percentage: 40, color: "#b0b0b0" },
+      { name: "fresh spicy", percentage: 38, color: "#c5d99e" },
+      { name: "aromatic", percentage: 35, color: "#8fbcac" },
+    ],
+    seasons: { winter: 90, spring: 60, summer: 30, fall: 85, day: 60, night: 95 },
   },
   {
     id: 3,
@@ -40,6 +90,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "black-opium",
     bestseller: true,
+    notes: {
+      top: ["Pink Pepper", "Orange Blossom", "Pear"],
+      middle: ["Coffee", "Jasmine", "Bitter Almond", "Licorice"],
+      base: ["Vanilla", "Patchouli", "Cedar", "Cashmere Wood"],
+    },
+    accords: [
+      { name: "sweet", percentage: 100, color: "#e4a0a0" },
+      { name: "warm spicy", percentage: 70, color: "#c45a3c" },
+      { name: "vanilla", percentage: 65, color: "#f5deb3" },
+      { name: "white floral", percentage: 50, color: "#e8e8e8" },
+      { name: "coffee", percentage: 45, color: "#4a2c2a" },
+      { name: "powdery", percentage: 35, color: "#d4c4b0" },
+    ],
+    seasons: { winter: 90, spring: 50, summer: 20, fall: 80, day: 40, night: 95 },
   },
   {
     id: 4,
@@ -49,6 +113,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "bleu-de-chanel",
     bestseller: true,
+    notes: {
+      top: ["Lemon", "Mint", "Pink Pepper", "Grapefruit"],
+      middle: ["Ginger", "Nutmeg", "Jasmine", "Iso E Super"],
+      base: ["Incense", "Vetiver", "Cedar", "Sandalwood", "Patchouli"],
+    },
+    accords: [
+      { name: "woody", percentage: 100, color: "#8B6914" },
+      { name: "fresh spicy", percentage: 75, color: "#c5d99e" },
+      { name: "citrus", percentage: 65, color: "#e8d44d" },
+      { name: "aromatic", percentage: 50, color: "#8fbcac" },
+      { name: "fresh", percentage: 40, color: "#b8e0d2" },
+      { name: "warm spicy", percentage: 35, color: "#c45a3c" },
+    ],
+    seasons: { winter: 60, spring: 80, summer: 70, fall: 75, day: 85, night: 70 },
   },
   {
     id: 5,
@@ -58,6 +136,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "coco-mademoiselle",
     bestseller: true,
+    notes: {
+      top: ["Orange", "Mandarin", "Bergamot"],
+      middle: ["Rose", "Jasmine", "Lychee"],
+      base: ["Patchouli", "Vetiver", "Vanilla", "White Musk"],
+    },
+    accords: [
+      { name: "citrus", percentage: 100, color: "#e8d44d" },
+      { name: "white floral", percentage: 80, color: "#e8e8e8" },
+      { name: "fresh", percentage: 60, color: "#b8e0d2" },
+      { name: "patchouli", percentage: 50, color: "#6B4226" },
+      { name: "rose", percentage: 40, color: "#e8a0b0" },
+      { name: "powdery", percentage: 35, color: "#d4c4b0" },
+    ],
+    seasons: { winter: 40, spring: 85, summer: 70, fall: 65, day: 85, night: 60 },
   },
   {
     id: 6,
@@ -67,6 +159,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "delina",
     bestseller: true,
+    notes: {
+      top: ["Lychee", "Rhubarb", "Bergamot", "Nutmeg"],
+      middle: ["Turkish Rose", "Peony", "Vanilla"],
+      base: ["Cashmeran", "Musk", "Incense", "Vetiver"],
+    },
+    accords: [
+      { name: "floral", percentage: 100, color: "#e8a0b0" },
+      { name: "rose", percentage: 85, color: "#d4708a" },
+      { name: "sweet", percentage: 60, color: "#e4a0a0" },
+      { name: "fruity", percentage: 50, color: "#e8b0a0" },
+      { name: "musky", percentage: 40, color: "#c4b0a0" },
+      { name: "powdery", percentage: 35, color: "#d4c4b0" },
+    ],
+    seasons: { winter: 50, spring: 90, summer: 50, fall: 70, day: 80, night: 60 },
   },
   {
     id: 7,
@@ -76,6 +182,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "la-vie-est-belle",
     bestseller: true,
+    notes: {
+      top: ["Black Currant", "Pear"],
+      middle: ["Iris", "Jasmine", "Orange Blossom", "Praline"],
+      base: ["Patchouli", "Tonka Bean", "Vanilla", "Chocolate"],
+    },
+    accords: [
+      { name: "sweet", percentage: 100, color: "#e4a0a0" },
+      { name: "warm spicy", percentage: 60, color: "#c45a3c" },
+      { name: "gourmand", percentage: 55, color: "#c4946a" },
+      { name: "fruity", percentage: 50, color: "#e8b0a0" },
+      { name: "floral", percentage: 45, color: "#e8a0b0" },
+      { name: "powdery", percentage: 35, color: "#d4c4b0" },
+    ],
+    seasons: { winter: 85, spring: 60, summer: 25, fall: 80, day: 55, night: 85 },
   },
   {
     id: 8,
@@ -85,6 +205,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "lost-cherry",
     bestseller: true,
+    notes: {
+      top: ["Black Cherry", "Cherry Liqueur", "Bitter Almond"],
+      middle: ["Sour Cherry", "Turkish Rose", "Jasmine Sambac"],
+      base: ["Peru Balsam", "Roasted Tonka", "Sandalwood", "Cedar", "Vetiver"],
+    },
+    accords: [
+      { name: "sweet", percentage: 100, color: "#e4a0a0" },
+      { name: "fruity", percentage: 90, color: "#e8b0a0" },
+      { name: "cherry", percentage: 80, color: "#8b0000" },
+      { name: "almond", percentage: 50, color: "#d4b896" },
+      { name: "warm spicy", percentage: 40, color: "#c45a3c" },
+      { name: "woody", percentage: 35, color: "#8B6914" },
+    ],
+    seasons: { winter: 80, spring: 55, summer: 30, fall: 75, day: 50, night: 90 },
   },
   {
     id: 9,
@@ -94,6 +228,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "oud-wood",
     bestseller: true,
+    notes: {
+      top: ["Oud", "Rosewood", "Cardamom"],
+      middle: ["Sandalwood", "Vetiver", "Sichuan Pepper"],
+      base: ["Tonka Bean", "Amber", "Vanilla"],
+    },
+    accords: [
+      { name: "woody", percentage: 100, color: "#8B6914" },
+      { name: "oud", percentage: 80, color: "#5a3e28" },
+      { name: "warm spicy", percentage: 55, color: "#c45a3c" },
+      { name: "smoky", percentage: 45, color: "#7a7a7a" },
+      { name: "aromatic", percentage: 40, color: "#8fbcac" },
+      { name: "earthy", percentage: 30, color: "#8B7355" },
+    ],
+    seasons: { winter: 85, spring: 50, summer: 25, fall: 80, day: 50, night: 90 },
   },
   {
     id: 10,
@@ -103,6 +251,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "santal-33",
     bestseller: true,
+    notes: {
+      top: ["Cardamom", "Iris", "Violet"],
+      middle: ["Ambrox", "Australian Sandalwood", "Papyrus"],
+      base: ["Cedarwood", "Leather", "Amber", "Musk"],
+    },
+    accords: [
+      { name: "woody", percentage: 100, color: "#8B6914" },
+      { name: "aromatic", percentage: 70, color: "#8fbcac" },
+      { name: "leather", percentage: 55, color: "#5a3e28" },
+      { name: "warm spicy", percentage: 45, color: "#c45a3c" },
+      { name: "musky", percentage: 40, color: "#c4b0a0" },
+      { name: "earthy", percentage: 30, color: "#8B7355" },
+    ],
+    seasons: { winter: 70, spring: 70, summer: 50, fall: 80, day: 75, night: 75 },
   },
   {
     id: 11,
@@ -112,6 +274,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "sauvage",
     bestseller: true,
+    notes: {
+      top: ["Pepper", "Bergamot", "Calabrian Bergamot"],
+      middle: ["Lavender", "Sichuan Pepper", "Vetiver", "Pink Pepper"],
+      base: ["Ambroxan", "Cedar", "Labdanum"],
+    },
+    accords: [
+      { name: "fresh spicy", percentage: 100, color: "#c5d99e" },
+      { name: "woody", percentage: 80, color: "#8B6914" },
+      { name: "aromatic", percentage: 65, color: "#8fbcac" },
+      { name: "citrus", percentage: 55, color: "#e8d44d" },
+      { name: "fresh", percentage: 45, color: "#b8e0d2" },
+      { name: "warm spicy", percentage: 35, color: "#c45a3c" },
+    ],
+    seasons: { winter: 50, spring: 85, summer: 80, fall: 70, day: 90, night: 65 },
   },
   {
     id: 12,
@@ -121,6 +297,20 @@ export const products: Product[] = [
     prices: { "3ml": 75, "30ml": 250, "50ml": 395, "100ml": 595 },
     slug: "tobacco-vanille",
     bestseller: true,
+    notes: {
+      top: ["Tobacco Leaf", "Spicy Notes"],
+      middle: ["Vanilla", "Cacao", "Tonka Bean", "Tobacco Blossom"],
+      base: ["Dried Fruits", "Wood Sap", "Suede"],
+    },
+    accords: [
+      { name: "sweet", percentage: 100, color: "#e4a0a0" },
+      { name: "warm spicy", percentage: 85, color: "#c45a3c" },
+      { name: "vanilla", percentage: 75, color: "#f5deb3" },
+      { name: "tobacco", percentage: 70, color: "#8B6914" },
+      { name: "woody", percentage: 45, color: "#6B4226" },
+      { name: "powdery", percentage: 35, color: "#d4c4b0" },
+    ],
+    seasons: { winter: 95, spring: 40, summer: 10, fall: 85, day: 35, night: 95 },
   },
   {
     id: 13,

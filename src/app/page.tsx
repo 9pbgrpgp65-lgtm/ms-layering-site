@@ -1,10 +1,14 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { products, categories } from "@/data/products";
+import type { Product } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import AnimatedSection from "@/components/AnimatedSection";
+
+type NotionProduct = Product & { photoUrls: string[] };
 
 const steps = [
   {
@@ -26,6 +30,22 @@ const steps = [
 
 export default function Home() {
   const bestsellers = products.filter((p) => p.bestseller);
+  const [photoMap, setPhotoMap] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data: NotionProduct[]) => {
+        const map: Record<string, string> = {};
+        for (const p of data) {
+          if (p.photoUrls?.length > 0) {
+            map[p.slug] = p.photoUrls[0];
+          }
+        }
+        setPhotoMap(map);
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <>
@@ -128,7 +148,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {bestsellers.map((product, i) => (
               <AnimatedSection key={product.id} delay={i * 0.1}>
-                <ProductCard product={product} />
+                <ProductCard product={product} photoUrl={photoMap[product.slug]} />
               </AnimatedSection>
             ))}
           </div>

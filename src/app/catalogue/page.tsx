@@ -1,21 +1,40 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { products, categories } from "@/data/products";
+import { products as staticProducts, categories } from "@/data/products";
+import type { Product } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import AnimatedSection from "@/components/AnimatedSection";
+
+type NotionProduct = Product & { photoUrls: string[] };
 
 function CatalogueContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "all";
   const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [photoMap, setPhotoMap] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data: NotionProduct[]) => {
+        const map: Record<string, string> = {};
+        for (const p of data) {
+          if (p.photoUrls?.length > 0) {
+            map[p.slug] = p.photoUrls[0];
+          }
+        }
+        setPhotoMap(map);
+      })
+      .catch(() => {});
+  }, []);
 
   const filtered =
     activeCategory === "all"
-      ? products
-      : products.filter((p) => p.category === activeCategory);
+      ? staticProducts
+      : staticProducts.filter((p) => p.category === activeCategory);
 
   return (
     <div className="pt-28 pb-24 px-6">
@@ -71,7 +90,7 @@ function CatalogueContent() {
         >
           {filtered.map((product, i) => (
             <AnimatedSection key={product.id} delay={i * 0.05}>
-              <ProductCard product={product} />
+              <ProductCard product={product} photoUrl={photoMap[product.slug]} />
             </AnimatedSection>
           ))}
         </motion.div>
