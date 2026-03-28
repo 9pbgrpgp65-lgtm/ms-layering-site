@@ -51,7 +51,9 @@ export default function ProductPage() {
       .then((data: IngredientImage[]) => {
         const map: Record<string, IngredientImage> = {};
         for (const item of data) {
+          // Store both original name and lowercase for case-insensitive matching
           map[item.name] = item;
+          map[item.name.toLowerCase()] = item;
         }
         setIngredientImages(map);
       })
@@ -100,7 +102,7 @@ export default function ProductPage() {
   ];
 
   const renderNoteIcon = (note: string) => {
-    const ingredient = ingredientImages[note];
+    const ingredient = ingredientImages[note] || ingredientImages[note.toLowerCase()];
     const category = ingredient?.category || "other";
     const bgColor = categoryColors[category] || categoryColors.other;
 
