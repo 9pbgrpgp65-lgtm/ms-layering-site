@@ -197,7 +197,20 @@ export async function getProducts(): Promise<NotionProduct[]> {
         "100ml": getNumber(props["Price 100ml"]),
       };
 
-      const notes = parseNotesJson(getText(props.Notes));
+      // Parse notes: try JSON format first, then separate comma-separated fields
+      let notes = parseNotesJson(getText(props.Notes));
+      if (!notes) {
+        const topRaw = getText(props["Top Notes"]);
+        const middleRaw = getText(props["Middle Notes"]);
+        const baseRaw = getText(props["Base Notes"]);
+        if (topRaw || middleRaw || baseRaw) {
+          notes = {
+            top: topRaw ? topRaw.split(",").map((s) => s.trim()).filter(Boolean) : [],
+            middle: middleRaw ? middleRaw.split(",").map((s) => s.trim()).filter(Boolean) : [],
+            base: baseRaw ? baseRaw.split(",").map((s) => s.trim()).filter(Boolean) : [],
+          };
+        }
+      }
       const accords = parseAccordsJson(getText(props.Accords));
       const seasons = parseSeasonsJson(getText(props.Seasons));
 

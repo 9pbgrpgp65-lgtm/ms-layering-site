@@ -66,8 +66,17 @@ export default function ProductPage() {
       .catch(() => {});
   }, [params.slug]);
 
-  // Merge: Notion data takes priority, static data as fallback
-  const product = notionProduct || staticProduct;
+  // Merge: combine static + Notion data, keeping notes/accords/seasons from static
+  const product = staticProduct || notionProduct
+    ? {
+        ...(staticProduct || {}),
+        ...(notionProduct || {}),
+        // Preserve Fragrantica data from static if Notion doesn't have it
+        notes: notionProduct?.notes || staticProduct?.notes,
+        accords: notionProduct?.accords || staticProduct?.accords,
+        seasons: notionProduct?.seasons || staticProduct?.seasons,
+      } as Product
+    : null;
   const photoUrls = notionProduct?.photoUrls || [];
 
   if (!product) {
